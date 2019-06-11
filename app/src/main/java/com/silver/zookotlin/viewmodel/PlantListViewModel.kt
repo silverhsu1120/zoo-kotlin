@@ -4,33 +4,33 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import com.google.gson.Gson
 import com.google.gson.JsonObject
-import com.silver.zookotlin.model.bean.House
-import com.silver.zookotlin.model.api.ApiHouseRes
+import com.silver.zookotlin.model.bean.Plant
+import com.silver.zookotlin.model.api.ApiPlantRes
 import com.silver.zookotlin.model.api.ApiServiceManager
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class HouseListViewModel : ViewModel() {
+class PlantListViewModel : ViewModel() {
 
     private val disposable = CompositeDisposable()
 
-    private val houses = MutableLiveData<MutableList<House>>()
+    private val plants = MutableLiveData<MutableList<Plant>>()
 
-    fun getHouses(): MutableLiveData<MutableList<House>> = this.houses
+    fun getPlants(): MutableLiveData<MutableList<Plant>> = this.plants
 
-    fun fetchHouseList(query: String?, limit: Int?, offset: Int?) {
-        disposable.add(ApiServiceManager.getInstance().getApiHouse()
+    fun fetchPlantList(query: String?, limit: Int?, offset: Int?) {
+        disposable.add(ApiServiceManager.getInstance().getApiPlant()
             .read(query, limit, offset)
             .subscribeOn(Schedulers.io())
             .map { t ->
                 val json = t.string()
                 val obj = Gson().fromJson(json, JsonObject::class.java)
                 val result = obj.getAsJsonObject("result").toString()
-                Gson().fromJson(result, ApiHouseRes::class.java)
+                Gson().fromJson(result, ApiPlantRes::class.java)
             }
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { t -> houses.value = t?.results }
+            .subscribe { t -> plants.value = t?.results }
         )
     }
 

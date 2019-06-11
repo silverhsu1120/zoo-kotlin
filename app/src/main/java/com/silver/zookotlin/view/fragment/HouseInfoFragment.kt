@@ -11,11 +11,11 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.silver.zookotlin.R
-import com.silver.zookotlin.model.House
-import com.silver.zookotlin.model.Plant
+import com.silver.zookotlin.model.bean.House
+import com.silver.zookotlin.model.bean.Plant
 import com.silver.zookotlin.view.activity.MainActivity
 import com.silver.zookotlin.view.adapter.HouseInfoAdapter
-import com.silver.zookotlin.viewmodel.HouseViewModel
+import com.silver.zookotlin.viewmodel.PlantListViewModel
 import kotlinx.android.synthetic.main.fragment_house_info.*
 import kotlinx.android.synthetic.main.fragment_house_info.view.*
 
@@ -23,7 +23,7 @@ private const val ARG_HOUSE = "house"
 
 class HouseInfoFragment : Fragment(), HouseInfoAdapter.OnItemClickListener {
 
-    private lateinit var viewModel: HouseViewModel
+    private lateinit var viewModel: PlantListViewModel
 
     private var house: House? = null
 
@@ -49,15 +49,15 @@ class HouseInfoFragment : Fragment(), HouseInfoAdapter.OnItemClickListener {
     }
 
     private fun initViewModel() {
-        viewModel = ViewModelProviders.of(this).get(HouseViewModel::class.java)
-        viewModel.getHouse().observe(this, Observer<House> { house ->
-            house?.let { (rv_house_info.adapter as HouseInfoAdapter).load(it) }
+        viewModel = ViewModelProviders.of(this).get(PlantListViewModel::class.java)
+        viewModel.getPlants().observe(this, Observer<MutableList<Plant>> { plants ->
+            plants?.let { (rv_house_info.adapter as HouseInfoAdapter).load(it) }
         })
     }
 
     override fun onResume() {
         super.onResume()
-        viewModel.getHouse().value = this.house
+        viewModel.fetchPlantList(house?.name, null, null)
     }
 
     override fun onItemClick(plant: Plant) {

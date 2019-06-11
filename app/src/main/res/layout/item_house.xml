@@ -43,7 +43,7 @@
             tools:text="@string/insect_house"/>
 
     <TextView
-            android:id="@+id/tv_intro"
+            android:id="@+id/tv_info"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ellipsize="end"
@@ -55,7 +55,7 @@
             tools:text="@string/msg_insect_house"/>
 
     <TextView
-            android:id="@+id/tv_info"
+            android:id="@+id/tv_memo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:lines="1"
@@ -63,8 +63,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/iv_nav_next"
             app:layout_constraintStart_toEndOf="@id/guideline"
-            app:layout_constraintTop_toBottomOf="@id/tv_intro"
-            tools:text="@string/msg_no_closed_info"/>
+            app:layout_constraintTop_toBottomOf="@id/tv_info"
+            tools:text="@string/msg_memo"/>
 
     <ImageView
             android:id="@+id/iv_nav_next"

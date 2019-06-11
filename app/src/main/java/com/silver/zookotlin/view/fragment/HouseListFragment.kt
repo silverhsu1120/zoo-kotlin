@@ -11,8 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.silver.zookotlin.R
-import com.silver.zookotlin.model.DataGenerator
-import com.silver.zookotlin.model.House
+import com.silver.zookotlin.model.bean.House
 import com.silver.zookotlin.view.activity.MainActivity
 import com.silver.zookotlin.view.adapter.HouseListAdapter
 import com.silver.zookotlin.viewmodel.HouseListViewModel
@@ -48,7 +47,7 @@ class HouseListFragment : Fragment(), HouseListAdapter.OnItemClickListener {
 
     override fun onResume() {
         super.onResume()
-        viewModel.getHouses().value = this.context?.let { DataGenerator.getHouseList(it) }
+        viewModel.fetchHouseList(null, null, null)
     }
 
     override fun onItemClick(house: House) {

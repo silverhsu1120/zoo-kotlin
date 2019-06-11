@@ -7,9 +7,11 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 
 import com.silver.zookotlin.R
-import com.silver.zookotlin.model.Plant
+import com.silver.zookotlin.model.bean.Plant
 import com.silver.zookotlin.viewmodel.PlantViewModel
 import kotlinx.android.synthetic.main.fragment_plant_info.*
 import kotlinx.android.synthetic.main.fragment_plant_info.view.*
@@ -40,20 +42,27 @@ class PlantInfoFragment : Fragment() {
     }
 
     private fun initView(view: View) {
-        view.view_section_alias?.tv_subject?.text = getString(R.string.alias)
-        view.view_section_intro?.tv_subject?.text = getString(R.string.intro)
-        view.view_section_type?.tv_subject?.text = getString(R.string.type)
-        view.view_section_use?.tv_subject?.text = getString(R.string.use)
+        view.view_section_name.tv_subject.text = plant?.chineseName
+        view.view_section_alias.tv_subject.text = getString(R.string.alias)
+        view.view_section_brief.tv_subject.text = getString(R.string.intro)
+        view.view_section_feature.tv_subject.text = getString(R.string.feature)
+        view.view_section_function.tv_subject.text = getString(R.string.function)
     }
 
     private fun initViewModel() {
         viewModel = ViewModelProviders.of(this).get(PlantViewModel::class.java)
         viewModel.getPlant().observe(this, Observer { plant ->
-            plant?.resId?.let { iv_picture.setImageResource(it) }
-            view_section_alias?.tv_message?.text = plant?.alias
-            view_section_intro?.tv_message?.text = plant?.intro
-            view_section_type?.tv_message?.text = plant?.type
-            view_section_use?.tv_message?.text = plant?.use
+            view_section_name.tv_message.text = plant?.englishName
+            view_section_alias.tv_message.text = plant?.alias
+            view_section_brief.tv_message.text = plant?.brief
+            view_section_feature.tv_message.text = plant?.feature
+            view_section_function.tv_message.text = plant?.function
+            view_section_update.tv_message.text =
+                String.format("%s : %s", getString(R.string.msg_update), plant?.update)
+            Glide.with(context)
+                .load(plant?.picUrl)
+                .apply(RequestOptions.errorOf(R.mipmap.ic_launcher))
+                .into(iv_picture)
         })
     }
 

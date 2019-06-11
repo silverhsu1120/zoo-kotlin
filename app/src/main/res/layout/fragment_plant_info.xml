@@ -33,7 +33,7 @@
                     tools:src="@drawable/ic_fire_spike"/>
 
             <include
-                    android:id="@+id/view_section_alias"
+                    android:id="@+id/view_section_name"
                     layout="@layout/view_section"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -43,7 +43,17 @@
                     app:layout_constraintTop_toBottomOf="@id/iv_picture"/>
 
             <include
-                    android:id="@+id/view_section_intro"
+                    android:id="@+id/view_section_alias"
+                    layout="@layout/view_section"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view_section_name"/>
+
+            <include
+                    android:id="@+id/view_section_brief"
                     layout="@layout/view_section"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -52,16 +62,26 @@
                     app:layout_constraintTop_toBottomOf="@id/view_section_alias"/>
 
             <include
-                    android:id="@+id/view_section_type"
+                    android:id="@+id/view_section_feature"
                     layout="@layout/view_section"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/view_section_intro"/>
+                    app:layout_constraintTop_toBottomOf="@id/view_section_brief"/>
 
             <include
-                    android:id="@+id/view_section_use"
+                    android:id="@+id/view_section_function"
+                    layout="@layout/view_section"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view_section_feature"/>
+
+            <include
+                    android:id="@+id/view_section_update"
                     layout="@layout/view_section"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -69,7 +89,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/view_section_type"/>
+                    app:layout_constraintTop_toBottomOf="@id/view_section_function"/>
 
         </android.support.constraint.ConstraintLayout>
 

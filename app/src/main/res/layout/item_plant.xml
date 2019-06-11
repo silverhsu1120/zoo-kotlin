@@ -43,7 +43,7 @@
             tools:text="@string/insect_house"/>
 
     <TextView
-            android:id="@+id/tv_intro"
+            android:id="@+id/tv_alias"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ellipsize="end"

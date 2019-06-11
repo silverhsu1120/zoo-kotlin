@@ -1,30 +1,21 @@
 <resources>
     <string name="app_name">台北市立動物園</string>
 
+    <string name="insect_house">昆蟲館</string>
+    <string name="fire_spike">紅樓花</string>
+
     <string name="alias">別名</string>
     <string name="intro">簡介</string>
-    <string name="type">特徵</string>
-    <string name="use">用途</string>
+    <string name="feature">特徵</string>
+    <string name="function">用途</string>
 
-    <string name="fire_spike">紅樓花</string>
-    <string name="insect_house">昆蟲館</string>
-    <string name="koala_house">無尾熊館</string>
-
+    <string name="msg_insect_house">昆蟲館分為五大區域：序幕大廳、多媒體視聽教室、臺灣昆蟲區、生態展示室、昆蟲特展區。除了介紹昆蟲的起源與演化、構造與適應，更有溫室及生態網室，讓遊客身處昆蟲圍繞的環境中。館區後方還有一個擁有豐富昆蟲資源的「蟲蟲探索谷」，為本園進行戶外生態解說教育的場所之一。</string>
     <string name="msg_fire_spike_alias">紅筒花</string>
     <string name="msg_fire_spike_intro">原產於中美洲波多黎各的熱帶雨林。花期9~12月。</string>
-    <string name="msg_fire_spike_type">
-        葉片長度10~30公分，寬度4~10公分，呈廣卵形，邊緣平滑沒有鋸齒，上下表面皆光滑。花穗長在枝條頂端，花梗細長，花朵呈長筒狀，紅色。蒴果呈棒狀，長度1~2公分。
-    </string>
+    <string name="msg_fire_spike_type">葉片長度10~30公分，寬度4~10公分，呈廣卵形，邊緣平滑沒有鋸齒，上下表面皆光滑。花穗長在枝條頂端，花梗細長，花朵呈長筒狀，紅色。蒴果呈棒狀，長度1~2公分。</string>
     <string name="msg_fire_spike_use">1. 適用於盆栽作觀花植物。\n2. 蜜源植物：鮮紅色、長筒狀花有利吸引蝴蝶吸食花蜜並傳播花粉。</string>
-    <string name="msg_insect_house">
-        昆蟲館分為五大區域：序幕大廳、多媒體視聽教室、臺灣昆蟲區、生態展示室、昆蟲特展區。除了介紹昆蟲的起源與演化、構造與適應，更有溫室及生態網室，讓遊客身處昆蟲圍繞的環境中。館區後方還有一個擁有豐富昆蟲資源的「蟲蟲探索谷」，為本園進行戶外生態解說教育的場所之一。
-    </string>
-    <string name="msg_koala_house">
-        無尾熊為最具代表性的有袋目動物之一。來自澳洲「庫倫賓野生動物保護區」，代表城市友誼並肩負保育、教育使命的無尾熊們，自引進以來一直都是眾所矚目的焦點。無尾熊館設有多個獨立空間，每間屋頂都有天窗可以讓陽光照射進來。在適當天氣時，無尾熊偶爾也會到戶外展示場活動，享受溫暖的陽光。
-    </string>
 
-    <string name="msg_no_closed_info">無休館資訊</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="msg_memo">無休館資訊</string>
+    <string name="msg_category">室內區</string>
+    <string name="msg_update">最後更新</string>
 </resources>

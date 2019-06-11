@@ -1,11 +1,14 @@
 package com.silver.zookotlin.view.adapter
 
 import android.support.v7.widget.RecyclerView
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.silver.zookotlin.R
-import com.silver.zookotlin.model.House
+import com.silver.zookotlin.model.bean.House
 import kotlinx.android.synthetic.main.item_house.view.*
 
 class HouseListAdapter(
@@ -39,9 +42,15 @@ class HouseListAdapter(
 
         fun bind(house: House) {
             itemView.tv_name?.text = house.name
-            itemView.tv_intro?.text = house.intro
             itemView.tv_info?.text = house.info
-            itemView.iv_thumb?.setImageResource(house.resId)
+            if (TextUtils.isEmpty(house.memo))
+                itemView.tv_memo.setText(R.string.msg_memo)
+            else
+                itemView.tv_memo.text = house.memo
+            Glide.with(itemView.context)
+                .load(house.picUrl)
+                .apply(RequestOptions.errorOf(R.mipmap.ic_launcher))
+                .into(itemView.iv_thumb)
             itemView.setOnClickListener { listener.onItemClick(house) }
         }
     }

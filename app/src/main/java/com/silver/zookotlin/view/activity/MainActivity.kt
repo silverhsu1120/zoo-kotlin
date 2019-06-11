@@ -6,8 +6,8 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import com.silver.zookotlin.R
-import com.silver.zookotlin.model.House
-import com.silver.zookotlin.model.Plant
+import com.silver.zookotlin.model.bean.House
+import com.silver.zookotlin.model.bean.Plant
 import com.silver.zookotlin.view.fragment.HouseInfoFragment
 import com.silver.zookotlin.view.fragment.HouseListFragment
 import com.silver.zookotlin.view.fragment.PlantInfoFragment
@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun displayPlantInfo(plant: Plant) {
-        viewModel.pushState(R.drawable.ic_arrow_back_black, plant.name)
+        viewModel.pushState(R.drawable.ic_arrow_back_black, plant.chineseName)
         addFragment(PlantInfoFragment.newInstance(plant), TAG_PLANT_INFO)
     }
 
@@ -79,6 +79,7 @@ class MainActivity : AppCompatActivity() {
                 viewModel.popState()
                 supportFragmentManager.findFragmentByTag(TAG_HOUSE_INFO)?.let { removeFragment(it) }
             }
+            1 -> finish()
         }
     }
 

@@ -1,30 +1,39 @@
-package com.silver.zookotlin.model
+package com.silver.zookotlin.model.bean
 
 import android.os.Parcel
 import android.os.Parcelable
-import com.silver.zookotlin.util.readMutableList
+import com.google.gson.annotations.SerializedName
 
 data class House(
+    @SerializedName("E_Name")
     var name: String,
-    var intro: String,
+    @SerializedName("E_Info")
     var info: String,
-    var resId: Int,
-    var plants: MutableList<Plant>
+    @SerializedName("E_Memo")
+    var memo: String,
+    @SerializedName("E_Category")
+    var category: String,
+    @SerializedName("E_Pic_URL")
+    var picUrl: String,
+    @SerializedName("E_URL")
+    var url: String
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
-        parcel.readInt(),
-        parcel.readMutableList()
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString()
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(name)
-        parcel.writeString(intro)
         parcel.writeString(info)
-        parcel.writeInt(resId)
-        parcel.writeList(plants)
+        parcel.writeString(memo)
+        parcel.writeString(category)
+        parcel.writeString(picUrl)
+        parcel.writeString(url)
     }
 
     override fun describeContents(): Int {
