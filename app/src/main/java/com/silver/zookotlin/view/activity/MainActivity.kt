@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         initView()
         initViewModel()
+        displayHouseList()
     }
 
     private fun initView() {
@@ -44,58 +45,35 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    override fun onResume() {
-        super.onResume()
-        displayHouseList()
-    }
-
     override fun onBackPressed() {
-        super.onBackPressed()
         processBackEvent()
     }
 
     private fun displayHouseList() {
         viewModel.pushState(R.drawable.ic_menu_black, getString(R.string.app_name))
-        addFragment(HouseListFragment.newInstance(), TAG_HOUSE_LIST)
+        addFragment(HouseListFragment.newInstance(), TAG_HOUSE_LIST, false)
     }
 
     fun displayHouseInfo(house: House) {
         viewModel.pushState(R.drawable.ic_arrow_back_black, house.name)
-        addFragment(HouseInfoFragment.newInstance(house), TAG_HOUSE_INFO)
+        addFragment(HouseInfoFragment.newInstance(house), TAG_HOUSE_INFO, true)
     }
 
     fun displayPlantInfo(plant: Plant) {
         viewModel.pushState(R.drawable.ic_arrow_back_black, plant.chineseName)
-        addFragment(PlantInfoFragment.newInstance(plant), TAG_PLANT_INFO)
+        addFragment(PlantInfoFragment.newInstance(plant), TAG_PLANT_INFO, true)
     }
 
     private fun processBackEvent() {
-        when (viewModel.getStack().size) {
-            3 -> {
-                viewModel.popState()
-                supportFragmentManager.findFragmentByTag(TAG_PLANT_INFO)?.let { removeFragment(it) }
-            }
-            2 -> {
-                viewModel.popState()
-                supportFragmentManager.findFragmentByTag(TAG_HOUSE_INFO)?.let { removeFragment(it) }
-            }
-            1 -> finish()
-        }
+        viewModel.popState()
+        supportFragmentManager.popBackStack(null, 0)
     }
 
-    private fun addFragment(f: Fragment, tag: String) {
-        supportFragmentManager
-            .beginTransaction()
-            .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+    private fun addFragment(f: Fragment, tag: String, addToBackStack: Boolean) {
+        val transaction = supportFragmentManager.beginTransaction()
+        if (addToBackStack) transaction.addToBackStack(null)
+        transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
             .add(R.id.fl_container, f, tag)
-            .commitAllowingStateLoss()
-    }
-
-    private fun removeFragment(f: Fragment) {
-        supportFragmentManager
-            .beginTransaction()
-            .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
-            .remove(f)
             .commitAllowingStateLoss()
     }
 }
